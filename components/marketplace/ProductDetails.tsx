@@ -1,12 +1,15 @@
 'use client';
 
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useMarketplaceProduct } from '@/hooks/useMarketplaceProduct';
+import { EMIPlan } from '@/types/marketplace';
 import ProductImage from './ProductImage';
 import ProductInfo from './ProductInfo';
 import VariantSelector from './VariantSelector';
-import EMIPreview from './EMIPreview';
+import EMIPlanSelector from './EMIPlanSelector';
+import EMISummary from './EMISummary';
 import ProductDetailSkeleton from './ProductDetailSkeleton';
 import MarketplaceError from './MarketplaceError';
 import { ArrowLeft, ArrowRight, ShieldCheck } from 'lucide-react';
@@ -16,6 +19,7 @@ interface ProductDetailsProps {
 }
 
 export default function ProductDetails({ productId }: ProductDetailsProps) {
+  const router = useRouter();
   const {
     product,
     emiPlans,
@@ -27,10 +31,32 @@ export default function ProductDetails({ productId }: ProductDetailsProps) {
     refetch,
   } = useMarketplaceProduct(productId);
 
+  const [customPlanId, setCustomPlanId] = useState<string | null>(null);
   const emiSectionRef = useRef<HTMLDivElement>(null);
 
-  const handleScrollToEMI = () => {
-    emiSectionRef.current?.scrollIntoView({ behavior: 'smooth' });
+  // Derive active selected plan deterministically (custom user pick or lowest monthly plan)
+  const defaultPlanId = emiPlans && emiPlans.length > 0
+    ? [...emiPlans].sort((a, b) => a.monthlyAmount - b.monthlyAmount)[0].id
+    : null;
+
+  const activePlanId = customPlanId || defaultPlanId;
+
+  const handleSelectPlan = (plan: EMIPlan) => {
+    setCustomPlanId(plan.id);
+  };
+
+  const selectedPlan = emiPlans.find((p) => p.id === activePlanId) || null;
+
+  const handleProceed = () => {
+    if (!product || !activePlanId) return;
+
+    const queryParams = new URLSearchParams();
+    if (selectedVariant) {
+      queryParams.append('variantId', selectedVariant.id);
+    }
+    queryParams.append('planId', activePlanId);
+
+    router.push(`/shop/product/${product.id}/confirm?${queryParams.toString()}`);
   };
 
   if (loading) {
@@ -58,8 +84,8 @@ export default function ProductDetails({ productId }: ProductDetailsProps) {
   const hasNoCostEmi = emiPlans.some((e) => e.isNoCost);
 
   return (
-    <div className="w-full space-y-4 pb-4">
-      {/* Top Navigation */}
+    <div className="w-full space-y-5 pb-6">
+      {/* Top Navigation Bar */}
       <div className="flex items-center justify-between">
         <Link
           href="/shop"
@@ -69,11 +95,11 @@ export default function ProductDetails({ productId }: ProductDetailsProps) {
           <span>Back to Marketplace</span>
         </Link>
         <span className="text-[11px] font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-full border border-slate-200/60">
-          Product Details
+          Step 1: Product & EMI Selection
         </span>
       </div>
 
-      {/* Main Content Layout (Mobile single column, Desktop 2-column) */}
+      {/* Main Grid Layout */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
         {/* Left Column: Product Image */}
         <div className="w-full">
@@ -84,7 +110,7 @@ export default function ProductDetails({ productId }: ProductDetailsProps) {
           />
         </div>
 
-        {/* Right Column: Info, Variants & EMI Preview */}
+        {/* Right Column: Info & Variants */}
         <div className="space-y-4">
           <ProductInfo
             product={product}
@@ -100,27 +126,39 @@ export default function ProductDetails({ productId }: ProductDetailsProps) {
               onSelectVariant={setSelectedVariant}
             />
           )}
-
-          {/* EMI Preview Card */}
-          <div ref={emiSectionRef}>
-            <EMIPreview emiPlans={emiPlans} onViewAllPlans={handleScrollToEMI} />
-          </div>
         </div>
       </div>
 
-      {/* Sticky/Fixed Primary Action CTA */}
-      <div className="pt-2">
+      {/* EMI Selection Section */}
+      <div ref={emiSectionRef} className="space-y-4 pt-2">
+        <EMIPlanSelector
+          emiPlans={emiPlans}
+          selectedPlanId={activePlanId}
+          onSelectPlan={handleSelectPlan}
+        />
+
+        {/* Selected Plan Summary Card */}
+        {selectedPlan && <EMISummary selectedPlan={selectedPlan} />}
+      </div>
+
+      {/* Primary Proceed CTA Button */}
+      <div className="pt-2 sticky bottom-4 z-40 bg-slate-50/90 backdrop-blur-md p-2 rounded-3xl border border-slate-200/80 shadow-lg">
         <button
           type="button"
-          onClick={handleScrollToEMI}
-          className="w-full bg-purple-700 hover:bg-purple-800 text-white font-extrabold py-3.5 px-6 rounded-2xl shadow-xl shadow-purple-900/25 flex items-center justify-center gap-2 text-sm transition-all duration-200 hover:scale-[1.01] active:scale-[0.99]"
+          disabled={!activePlanId}
+          onClick={handleProceed}
+          className={`w-full font-extrabold py-3.5 px-6 rounded-2xl shadow-xl flex items-center justify-center gap-2 text-sm transition-all duration-200 ${
+            activePlanId
+              ? 'bg-purple-700 hover:bg-purple-800 text-white shadow-purple-900/25 active:scale-[0.99]'
+              : 'bg-slate-200 text-slate-400 cursor-not-allowed'
+          }`}
         >
-          <span>Choose EMI Plan</span>
+          <span>Proceed with EMI Plan</span>
           <ArrowRight className="w-4 h-4 stroke-[2.5]" />
         </button>
         <div className="flex items-center justify-center gap-1.5 text-[11px] text-slate-400 mt-2">
           <ShieldCheck className="w-3.5 h-3.5 text-purple-600" />
-          <span>Zero-Cost EMI Selection unlocked in Stage 5</span>
+          <span>Collateralized loan approval via Mutual Funds</span>
         </div>
       </div>
     </div>

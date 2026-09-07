@@ -1,0 +1,67 @@
+'use client';
+
+import React from 'react';
+import { EMIPlan } from '@/types/marketplace';
+import { Sparkles, Receipt } from 'lucide-react';
+
+interface EMISummaryProps {
+  selectedPlan: EMIPlan;
+}
+
+export default function EMISummary({ selectedPlan }: EMISummaryProps) {
+  const formatCurrency = (amount: number) => {
+    return new Intl.NumberFormat('en-IN', {
+      style: 'currency',
+      currency: 'INR',
+      maximumFractionDigits: 0,
+    }).format(amount);
+  };
+
+  return (
+    <div className="bg-slate-900 text-white rounded-3xl p-5 shadow-xl border border-slate-800 space-y-3">
+      <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div className="flex items-center gap-2">
+          <div className="p-2 bg-purple-600/30 text-purple-300 rounded-xl">
+            <Receipt className="w-4 h-4" />
+          </div>
+          <div>
+            <h4 className="text-xs font-bold uppercase tracking-wider text-purple-300">
+              Selected EMI Summary
+            </h4>
+            <span className="text-sm font-black text-white">
+              {formatCurrency(selectedPlan.monthlyAmount)} × {selectedPlan.tenureMonths} Months
+            </span>
+          </div>
+        </div>
+
+        {selectedPlan.isNoCost && (
+          <span className="inline-flex items-center gap-1 bg-emerald-500/20 text-emerald-300 text-[10px] font-extrabold px-2.5 py-1 rounded-full border border-emerald-500/30">
+            <Sparkles className="w-3 h-3 text-emerald-400" />
+            <span>No Cost EMI</span>
+          </span>
+        )}
+      </div>
+
+      <div className="grid grid-cols-3 gap-2 text-center text-xs pt-1">
+        <div className="bg-slate-800/60 p-2.5 rounded-2xl border border-slate-700/50">
+          <span className="text-[10px] text-slate-400 block mb-0.5">Interest Rate</span>
+          <span className="font-extrabold text-white">
+            {selectedPlan.isNoCost ? '0%' : `${selectedPlan.interestRate}%`}
+          </span>
+        </div>
+        <div className="bg-slate-800/60 p-2.5 rounded-2xl border border-slate-700/50">
+          <span className="text-[10px] text-slate-400 block mb-0.5">Processing Fee</span>
+          <span className="font-extrabold text-white">
+            {selectedPlan.processingFee > 0 ? formatCurrency(selectedPlan.processingFee) : 'FREE'}
+          </span>
+        </div>
+        <div className="bg-slate-800/60 p-2.5 rounded-2xl border border-slate-700/50">
+          <span className="text-[10px] text-slate-400 block mb-0.5">Total Payable</span>
+          <span className="font-extrabold text-purple-300">
+            {formatCurrency(selectedPlan.totalAmount)}
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
