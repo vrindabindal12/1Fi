@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 import ShopTabs, { ShopTabType } from '@/components/shop/ShopTabs';
-import { ShoppingBag, Sparkles, Store, Building2, PackageCheck } from 'lucide-react';
+import Marketplace from '@/components/marketplace/Marketplace';
+import { Sparkles, Store, Building2 } from 'lucide-react';
 
 export default function ShopPage() {
   const [activeTab, setActiveTab] = useState<ShopTabType>('marketplace');
@@ -72,33 +73,7 @@ export default function ShopPage() {
           </div>
         )}
 
-        {activeTab === 'marketplace' && (
-          <div className="bg-white rounded-3xl p-7 border border-purple-100 shadow-sm relative overflow-hidden">
-            <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-2">
-                <div className="p-2 bg-purple-100 text-purple-700 rounded-xl">
-                  <ShoppingBag className="w-5 h-5" />
-                </div>
-                <h3 className="text-base font-bold text-slate-900">1Fi Marketplace</h3>
-              </div>
-              <span className="text-[10px] font-bold bg-purple-50 text-purple-700 border border-purple-200/60 px-2.5 py-1 rounded-full">
-                Stage 1 Shell
-              </span>
-            </div>
-
-            <div className="bg-slate-50 rounded-2xl p-5 text-center border border-dashed border-slate-200">
-              <div className="w-12 h-12 bg-purple-100 text-purple-700 rounded-2xl flex items-center justify-center mx-auto mb-3">
-                <PackageCheck className="w-6 h-6" />
-              </div>
-              <h4 className="text-sm font-bold text-slate-900 mb-1">
-                Marketplace products coming soon
-              </h4>
-              <p className="text-xs text-slate-500 leading-relaxed max-w-xs mx-auto">
-                Product catalog grid, variants, price breakdowns, and interactive EMI selection flows will be built in Stage 2 and beyond.
-              </p>
-            </div>
-          </div>
-        )}
+        {activeTab === 'marketplace' && <Marketplace />}
       </section>
     </div>
   );

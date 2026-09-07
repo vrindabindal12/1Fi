@@ -12,21 +12,14 @@ interface SearchBarProps {
 export default function SearchBar({ value, onChange, placeholder = 'Search products, brands...' }: SearchBarProps) {
   const [inputValue, setInputValue] = useState(value);
 
-  // Sync internal state when prop changes
-  useEffect(() => {
-    setInputValue(value);
-  }, [value]);
-
   // Debounce API search by 350ms
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (inputValue !== value) {
-        onChange(inputValue);
-      }
+      onChange(inputValue);
     }, 350);
 
     return () => clearTimeout(timer);
-  }, [inputValue, onChange, value]);
+  }, [inputValue, onChange]);
 
   const handleClear = () => {
     setInputValue('');
