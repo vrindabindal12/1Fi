@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import ShopTabs, { ShopTabType } from '@/components/shop/ShopTabs';
 import Marketplace from '@/components/marketplace/Marketplace';
-import { Sparkles, Store, Building2 } from 'lucide-react';
+import { Store, Building2 } from 'lucide-react';
 
 export default function ShopPage() {
   const [activeTab, setActiveTab] = useState<ShopTabType>('marketplace');
@@ -30,7 +30,6 @@ export default function ShopPage() {
         <div className="flex items-start justify-between gap-3">
           <div>
             <div className="inline-flex items-center gap-1 bg-white/20 px-2.5 py-0.5 rounded-full text-[10px] font-semibold text-white mb-2">
-              <Sparkles className="w-3 h-3 text-yellow-300 fill-current" />
               <span>Credit on Mutual Funds</span>
             </div>
             <h2 className="text-base font-bold leading-snug tracking-tight mb-1">

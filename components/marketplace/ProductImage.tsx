@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Sparkles, ImageOff } from 'lucide-react';
+import { ImageOff } from 'lucide-react';
 
 interface ProductImageProps {
   imageUrl: string;
@@ -18,7 +18,6 @@ export default function ProductImage({ imageUrl, name, hasNoCostEmi = false }: P
       {hasNoCostEmi && (
         <div className="absolute top-4 left-4 z-10">
           <span className="inline-flex items-center gap-1 bg-purple-700 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md shadow-purple-900/20">
-            <Sparkles className="w-3 h-3 text-yellow-300" />
             <span>No Cost EMI</span>
           </span>
         </div>

@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { EMIPlan } from '@/types/marketplace';
-import { Sparkles, Receipt } from 'lucide-react';
+import { Receipt } from 'lucide-react';
 
 interface EMISummaryProps {
   selectedPlan: EMIPlan;
@@ -36,7 +36,6 @@ export default function EMISummary({ selectedPlan }: EMISummaryProps) {
 
         {selectedPlan.isNoCost && (
           <span className="inline-flex items-center gap-1 bg-emerald-500/20 text-emerald-300 text-[10px] font-bold px-2 py-0.5 rounded-full border border-emerald-500/30">
-            <Sparkles className="w-2.5 h-2.5 text-emerald-400 fill-current" />
             <span>0% Interest</span>
           </span>
         )}

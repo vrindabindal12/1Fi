@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { EMIPlan } from '@/types/marketplace';
-import { Sparkles, CheckCircle2, Circle } from 'lucide-react';
+import { CheckCircle2, Circle } from 'lucide-react';
 
 interface EMIPlanSelectorProps {
   emiPlans: EMIPlan[];
@@ -88,7 +88,6 @@ export default function EMIPlanSelector({
                         : 'bg-purple-50 text-purple-700 border border-purple-200/60'
                     }`}
                   >
-                    <Sparkles className="w-2.5 h-2.5 fill-current" />
                     <span>0% Interest</span>
                   </span>
                 ) : (

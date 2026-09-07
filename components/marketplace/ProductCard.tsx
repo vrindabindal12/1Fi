@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Product } from '@/types/marketplace';
-import { Sparkles, ChevronRight, ImageOff } from 'lucide-react';
+import { ChevronRight, ImageOff } from 'lucide-react';
 
 interface ProductCardProps {
   product: Product;
@@ -37,7 +37,6 @@ export default function ProductCard({ product }: ProductCardProps) {
       {hasNoCostEmi && (
         <div className="absolute top-2.5 left-2.5 z-10">
           <span className="inline-flex items-center gap-1 bg-purple-700 text-white text-[9px] font-semibold px-2 py-0.5 rounded-md">
-            <Sparkles className="w-2.5 h-2.5 text-yellow-300 fill-current" />
             <span>No Cost EMI</span>
           </span>
         </div>

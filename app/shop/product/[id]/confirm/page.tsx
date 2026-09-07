@@ -11,7 +11,6 @@ import MarketplaceError from '@/components/marketplace/MarketplaceError';
 import {
   ArrowLeft,
   CheckCircle2,
-  Sparkles,
   ShieldCheck,
   Receipt,
   Calendar,
@@ -241,7 +240,6 @@ export default function ConfirmationPage() {
             </div>
             {selectedPlan.isNoCost && (
               <span className="inline-flex items-center gap-1 bg-emerald-500/20 text-emerald-300 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full border border-emerald-500/30">
-                <Sparkles className="w-2.5 h-2.5 fill-current" />
                 <span>0% Interest</span>
               </span>
             )}

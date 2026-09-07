@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { EMIPlan } from '@/types/marketplace';
-import { Sparkles, Calendar, ChevronRight, ShieldCheck } from 'lucide-react';
+import { Calendar, ChevronRight, ShieldCheck } from 'lucide-react';
 
 interface EMIPreviewProps {
   emiPlans: EMIPlan[];
@@ -37,7 +37,6 @@ export default function EMIPreview({ emiPlans, onViewAllPlans }: EMIPreviewProps
         </div>
         {hasNoCost && (
           <span className="inline-flex items-center gap-1 bg-white/20 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
-            <Sparkles className="w-2.5 h-2.5 fill-current text-yellow-300" />
             <span>0% Interest</span>
           </span>
         )}
