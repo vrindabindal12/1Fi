@@ -44,7 +44,7 @@ export default function VariantSelector({
         )}
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+      <div className="grid grid-cols-1 gap-2.5">
         {variants.map((variant) => {
           const isSelected = selectedVariant?.id === variant.id;
 
@@ -55,26 +55,26 @@ export default function VariantSelector({
               role="radio"
               aria-checked={isSelected}
               onClick={() => onSelectVariant(variant)}
-              className={`p-3.5 min-h-[46px] rounded-2xl border text-left flex items-center justify-between transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-600 ${
+              className={`w-full p-3.5 min-h-[48px] rounded-2xl border text-left flex items-center justify-between gap-3 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-600 ${
                 isSelected
                   ? 'bg-purple-700 text-white border-purple-700 shadow-md shadow-purple-900/20 scale-[1.01]'
                   : 'bg-slate-50 hover:bg-slate-100/80 text-slate-800 border-slate-200/80'
               }`}
             >
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2.5 min-w-0 flex-1">
                 <div
-                  className={`w-4 h-4 rounded-full border flex items-center justify-center transition-colors ${
+                  className={`w-4 h-4 rounded-full border flex items-center justify-center shrink-0 transition-colors ${
                     isSelected ? 'border-white bg-white text-purple-700' : 'border-slate-300 bg-white'
                   }`}
                 >
                   {isSelected && <Check className="w-2.5 h-2.5 stroke-[3]" />}
                 </div>
-                <span className="text-xs font-bold">{variant.value}</span>
+                <span className="text-xs font-bold truncate">{variant.value}</span>
               </div>
 
               {variant.priceAdjustment > 0 && (
                 <span
-                  className={`text-[11px] font-extrabold px-2 py-0.5 rounded-full ${
+                  className={`text-[11px] font-extrabold px-2.5 py-0.5 rounded-full shrink-0 ${
                     isSelected
                       ? 'bg-purple-800 text-purple-100'
                       : 'bg-slate-200/70 text-slate-700'

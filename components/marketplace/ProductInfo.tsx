@@ -37,12 +37,12 @@ export default function ProductInfo({
       </div>
 
       {/* Product Title */}
-      <h1 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight leading-snug">
+      <h1 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight leading-snug break-words">
         {product.name}
       </h1>
 
       {/* Price Area */}
-      <div className="flex items-baseline gap-2.5 pb-2 border-b border-slate-100">
+      <div className="flex flex-wrap items-baseline gap-2 pb-2 border-b border-slate-100">
         <div className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
           {formatCurrency(calculatedPrice)}
         </div>
@@ -58,7 +58,7 @@ export default function ProductInfo({
         <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">
           About this Product
         </h3>
-        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal break-words">
           {product.description}
         </p>
       </div>

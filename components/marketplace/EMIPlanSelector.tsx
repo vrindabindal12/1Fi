@@ -105,8 +105,8 @@ export default function EMIPlanSelector({
               </div>
 
               {/* Monthly Amount Header */}
-              <div className="flex items-baseline justify-between pl-7">
-                <div>
+              <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 pl-7">
+                <div className="shrink-0">
                   <span
                     className={`text-lg font-black tracking-tight ${
                       isSelected ? 'text-white' : 'text-slate-900'
@@ -126,7 +126,7 @@ export default function EMIPlanSelector({
 
                 {/* Details line */}
                 <div
-                  className={`text-[11px] font-medium text-right ${
+                  className={`text-[11px] font-medium text-right shrink-0 ${
                     isSelected ? 'text-purple-100' : 'text-slate-500'
                   }`}
                 >

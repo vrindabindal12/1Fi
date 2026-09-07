@@ -42,22 +42,22 @@ export default function EMISummary({ selectedPlan }: EMISummaryProps) {
         )}
       </div>
 
-      <div className="grid grid-cols-3 gap-2 text-center text-xs pt-1">
-        <div className="bg-slate-800/60 p-2.5 rounded-2xl border border-slate-700/50">
-          <span className="text-[10px] text-slate-400 block mb-0.5">Interest Rate</span>
-          <span className="font-extrabold text-white">
+      <div className="grid grid-cols-3 gap-2 text-center pt-1">
+        <div className="bg-slate-800/60 p-2.5 rounded-2xl border border-slate-700/50 min-w-0">
+          <span className="text-[10px] text-slate-400 block mb-0.5 font-medium truncate">Interest Rate</span>
+          <span className="font-extrabold text-xs sm:text-sm text-white block truncate">
             {selectedPlan.isNoCost ? '0%' : `${selectedPlan.interestRate}%`}
           </span>
         </div>
-        <div className="bg-slate-800/60 p-2.5 rounded-2xl border border-slate-700/50">
-          <span className="text-[10px] text-slate-400 block mb-0.5">Processing Fee</span>
-          <span className="font-extrabold text-white">
+        <div className="bg-slate-800/60 p-2.5 rounded-2xl border border-slate-700/50 min-w-0">
+          <span className="text-[10px] text-slate-400 block mb-0.5 font-medium truncate">Processing Fee</span>
+          <span className="font-extrabold text-xs sm:text-sm text-white block truncate">
             {selectedPlan.processingFee > 0 ? formatCurrency(selectedPlan.processingFee) : 'FREE'}
           </span>
         </div>
-        <div className="bg-slate-800/60 p-2.5 rounded-2xl border border-slate-700/50">
-          <span className="text-[10px] text-slate-400 block mb-0.5">Total Payable</span>
-          <span className="font-extrabold text-purple-300">
+        <div className="bg-slate-800/60 p-2.5 rounded-2xl border border-slate-700/50 min-w-0">
+          <span className="text-[10px] text-slate-400 block mb-0.5 font-medium truncate">Total Payable</span>
+          <span className="font-extrabold text-xs sm:text-sm text-purple-300 block truncate">
             {formatCurrency(selectedPlan.totalAmount)}
           </span>
         </div>

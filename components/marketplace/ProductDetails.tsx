@@ -84,7 +84,7 @@ export default function ProductDetails({ productId }: ProductDetailsProps) {
   const hasNoCostEmi = emiPlans.some((e) => e.isNoCost);
 
   return (
-    <div className="w-full space-y-5 pb-6">
+    <div className="w-full space-y-5 pb-28">
       {/* Top Navigation Bar */}
       <div className="flex items-center justify-between">
         <Link
@@ -99,38 +99,37 @@ export default function ProductDetails({ productId }: ProductDetailsProps) {
         </span>
       </div>
 
-      {/* Main Grid Layout */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
-        {/* Left Column: Product Image */}
-        <div className="w-full">
-          <ProductImage
-            imageUrl={selectedVariant?.imageUrl || product.imageUrl}
-            name={product.name}
-            hasNoCostEmi={hasNoCostEmi}
-          />
-        </div>
-
-        {/* Right Column: Info & Variants */}
-        <div className="space-y-4">
-          <ProductInfo
-            product={product}
-            selectedVariant={selectedVariant}
-            calculatedPrice={calculatedPrice}
-          />
-
-          {/* Variant Selector */}
-          {product.variants && product.variants.length > 0 && (
-            <VariantSelector
-              variants={product.variants}
-              selectedVariant={selectedVariant}
-              onSelectVariant={setSelectedVariant}
-            />
-          )}
-        </div>
+      {/* Product Image */}
+      <div className="w-full">
+        <ProductImage
+          imageUrl={selectedVariant?.imageUrl || product.imageUrl}
+          name={product.name}
+          hasNoCostEmi={hasNoCostEmi}
+        />
       </div>
 
+      {/* Product Information */}
+      <div className="w-full">
+        <ProductInfo
+          product={product}
+          selectedVariant={selectedVariant}
+          calculatedPrice={calculatedPrice}
+        />
+      </div>
+
+      {/* Variant Selector */}
+      {product.variants && product.variants.length > 0 && (
+        <div className="w-full">
+          <VariantSelector
+            variants={product.variants}
+            selectedVariant={selectedVariant}
+            onSelectVariant={setSelectedVariant}
+          />
+        </div>
+      )}
+
       {/* EMI Selection Section */}
-      <div ref={emiSectionRef} className="space-y-4 pt-2">
+      <div ref={emiSectionRef} className="space-y-4 pt-1">
         <EMIPlanSelector
           emiPlans={emiPlans}
           selectedPlanId={activePlanId}
@@ -142,7 +141,7 @@ export default function ProductDetails({ productId }: ProductDetailsProps) {
       </div>
 
       {/* Primary Proceed CTA Button */}
-      <div className="pt-2 sticky bottom-4 z-40 bg-slate-50/90 backdrop-blur-md p-2 rounded-3xl border border-slate-200/80 shadow-lg">
+      <div className="pt-2 sticky bottom-20 z-40 bg-slate-50/95 backdrop-blur-md p-2 rounded-3xl border border-slate-200/80 shadow-lg">
         <button
           type="button"
           disabled={!activePlanId}
