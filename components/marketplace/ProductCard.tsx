@@ -28,7 +28,11 @@ export default function ProductCard({ product }: ProductCardProps) {
   const hasNoCostEmi = product.emiPlans?.some((e) => e.isNoCost) ?? false;
 
   return (
-    <div className="group bg-white rounded-3xl p-3.5 border border-slate-100 shadow-sm hover:shadow-md hover:border-purple-200/80 transition-all duration-300 flex flex-col justify-between relative overflow-hidden h-full">
+    <Link
+      href={`/shop/product/${product.id}`}
+      aria-label={`View details for ${product.name}`}
+      className="group bg-white rounded-3xl p-3.5 border border-slate-100 shadow-sm hover:shadow-md hover:border-purple-200/80 transition-all duration-300 flex flex-col justify-between relative overflow-hidden h-full cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-600"
+    >
       {/* Badges Container */}
       {hasNoCostEmi && (
         <div className="absolute top-3 left-3 z-10">
@@ -40,11 +44,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       )}
 
       {/* Product Image Area */}
-      <Link
-        href={`/shop/product/${product.id}`}
-        aria-label={`View details for ${product.name}`}
-        className="block relative w-full aspect-square mb-3 rounded-2xl bg-slate-50 overflow-hidden group-hover:scale-[1.02] transition-transform duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-600"
-      >
+      <div className="relative w-full aspect-square mb-3 rounded-2xl bg-slate-50 overflow-hidden group-hover:scale-[1.02] transition-transform duration-300">
         {!imageError ? (
           <Image
             src={product.imageUrl}
@@ -60,7 +60,7 @@ export default function ProductCard({ product }: ProductCardProps) {
             <span className="text-[10px] text-slate-400 font-medium">Image unavailable</span>
           </div>
         )}
-      </Link>
+      </div>
 
       {/* Product Details Content */}
       <div className="flex-1 flex flex-col justify-between">
@@ -68,11 +68,9 @@ export default function ProductCard({ product }: ProductCardProps) {
           <span className="text-[10px] font-extrabold text-purple-700 uppercase tracking-wider block mb-0.5">
             {product.brand}
           </span>
-          <Link href={`/shop/product/${product.id}`} className="block">
-            <h3 className="text-xs font-bold text-slate-900 group-hover:text-purple-700 transition-colors line-clamp-2 leading-snug mb-2">
-              {product.name}
-            </h3>
-          </Link>
+          <h3 className="text-xs font-bold text-slate-900 group-hover:text-purple-700 transition-colors line-clamp-2 leading-snug mb-2">
+            {product.name}
+          </h3>
         </div>
 
         <div>
@@ -93,15 +91,12 @@ export default function ProductCard({ product }: ProductCardProps) {
           )}
 
           {/* CTA Link / Button */}
-          <Link
-            href={`/shop/product/${product.id}`}
-            className="w-full bg-slate-100 group-hover:bg-purple-700 text-slate-700 group-hover:text-white text-xs font-bold py-2.5 px-3 min-h-[38px] rounded-xl flex items-center justify-center gap-1 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-600"
-          >
+          <div className="w-full bg-slate-100 group-hover:bg-purple-700 text-slate-700 group-hover:text-white text-xs font-bold py-2.5 px-3 min-h-[38px] rounded-xl flex items-center justify-center gap-1 transition-all duration-200">
             <span>View details</span>
             <ChevronRight className="w-3.5 h-3.5 stroke-[2.5]" />
-          </Link>
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
