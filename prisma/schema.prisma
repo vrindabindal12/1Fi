@@ -1,0 +1,52 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Product {
+  id          String           @id @default(uuid())
+  name        String
+  brand       String
+  description String           @db.Text
+  category    String
+  basePrice   Int              // Stored as integer (INR amount)
+  imageUrl    String
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  variants    ProductVariant[]
+  emiPlans    EMIPlan[]
+
+  @@map("products")
+}
+
+model ProductVariant {
+  id              String   @id @default(uuid())
+  productId       String
+  product         Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  name            String   // e.g. "Storage / Color"
+  value           String   // e.g. "256GB / Natural Titanium"
+  priceAdjustment Int      @default(0) // Price difference in INR
+  imageUrl        String?
+  createdAt       DateTime @default(now())
+
+  @@map("product_variants")
+}
+
+model EMIPlan {
+  id            String   @id @default(uuid())
+  productId     String
+  product       Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  tenureMonths  Int      // e.g., 3, 6, 9, 12, 18, 24
+  monthlyAmount Int      // Monthly payment in INR
+  interestRate  Float    @default(0.0) // Interest percentage
+  processingFee Int      @default(0)   // One-time processing fee in INR
+  totalAmount   Int      // Total payable amount over tenure
+  isNoCost      Boolean  @default(false)
+  createdAt     DateTime @default(now())
+
+  @@map("emi_plans")
+}
