@@ -1,4 +1,4 @@
-import { Product, ProductListResponse } from '@/types/marketplace';
+import { Product, ProductListResponse, EMIPlan } from '@/types/marketplace';
 
 /**
  * Client-side API Service for Marketplace Endpoints
@@ -26,7 +26,7 @@ export class MarketplaceApiService {
       headers: {
         'Content-Type': 'application/json',
       },
-      cache: 'no-store', // Always fetch fresh data
+      cache: 'no-store',
     });
 
     if (!response.ok) {
@@ -58,5 +58,28 @@ export class MarketplaceApiService {
 
     const product: Product = await response.json();
     return product;
+  }
+
+  /**
+   * Fetch EMI plans for a single product by ID
+   */
+  static async getEMIPlansByProductId(id: string): Promise<EMIPlan[]> {
+    const response = await fetch(`/api/marketplace/products/${encodeURIComponent(id)}/emi-plans`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      cache: 'no-store',
+    });
+
+    if (!response.ok) {
+      if (response.status === 404) {
+        throw new Error('Product not found');
+      }
+      throw new Error(`Failed to load EMI plans: ${response.statusText}`);
+    }
+
+    const data = await response.json();
+    return data.emiPlans || [];
   }
 }
