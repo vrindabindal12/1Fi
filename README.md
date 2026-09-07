@@ -1,75 +1,88 @@
 # 1Fi SDE Intern Assignment — 1Fi Marketplace
 
-A clean implementation of the **1Fi Marketplace** feature built inside the existing 1Fi Shop application shell.
+A mobile-first implementation of the **1Fi Marketplace** feature built inside the existing 1Fi Shop experience.
 
-## Tech Stack
+---
 
-- **Frontend**: Next.js 16 (App Router), React 19, TypeScript
-- **Styling**: Tailwind CSS v4 (Mobile-first responsive design, 1Fi Purple theme)
-- **Backend & Database**: Next.js API Routes, PostgreSQL, Prisma ORM 5.22
+## 📱 Features
+
+- **Integrated Shop Tabs**: Segmented control navigation between *Top Brands* (placeholder), *Nearby Stores* (placeholder), and *1Fi Marketplace* (fully functional).
+- **Dynamic Product Catalog**: Browse products with real-time search (debounced 350ms) and category filtering (*Smartphones*, *Laptops*, *Headphones*, *Smartwatches*, *Tablets*, *Televisions*).
+- **Product Details & Variant Selector**: View detailed specifications and select variants (Storage/Color) with dynamic price calculation (`basePrice + priceAdjustment`).
+- **Flexible EMI Selector & Calculator**: Browse available tenure options (3 to 24 months), view monthly EMI amounts, interest rates, processing fees, total payable amounts, and No-Cost EMI badges.
+- **Selected EMI Summary**: Real-time summary card detailing total loan terms.
+- **Confirmation Flow**: Multi-step flow preserving product, variant, and EMI plan selection across navigation.
+- **Mobile-First Responsive UI**: Optimized for mobile viewports (320px–550px) inside a centered 1Fi app shell container, while maintaining visual hierarchy on tablet and desktop screens.
+
+---
+
+## 🛠 Tech Stack
+
+- **Framework**: Next.js 16 (App Router), React 19, TypeScript
+- **Styling**: Tailwind CSS v4 (1Fi Purple theme, mobile fintech aesthetic)
+- **Database & ORM**: PostgreSQL, Prisma ORM 5.22
 - **Icons**: Lucide React
 
 ---
 
-## Database & Data Architecture (Stage 2)
+## 🗄 Database Architecture
 
-The 1Fi Marketplace database is modeled with a PostgreSQL relational schema via Prisma ORM:
+The 1Fi Marketplace schema consists of three relational models in PostgreSQL (`prisma/schema.prisma`):
 
-- **Product**: Core product entity storing `name`, `brand`, `description`, `category`, `basePrice` (in INR integer), `imageUrl`, and timestamps.
-- **ProductVariant**: Relational 1:N variants storing `name` (e.g., Storage / Color), `value`, and `priceAdjustment`.
-- **EMIPlan**: Relational 1:N EMI options storing `tenureMonths`, `monthlyAmount`, `interestRate`, `processingFee`, `totalAmount`, and `isNoCost` boolean flag.
+1. **`Product`**: Stores core product information (`name`, `brand`, `description`, `category`, `basePrice` in INR, `imageUrl`).
+2. **`ProductVariant`**: Relational 1:N variants storing variant details (`value` e.g., `256GB / Titanium Gray`, `priceAdjustment` in INR).
+3. **`EMIPlan`**: Relational 1:N EMI plans storing loan parameters (`tenureMonths`, `monthlyAmount`, `interestRate`, `processingFee`, `totalAmount`, `isNoCost`).
+
+> **Offline Fallback**: If PostgreSQL is unconfigured or offline, the API service layer (`lib/services/marketplaceService.ts`) automatically falls back to the structured dataset in `data/seedData.ts`.
 
 ---
 
-## Setup & Reproduction Commands
+## 🚀 Getting Started
 
-### 1. Environment Configuration
-Copy the `.env.example` file to `.env` and set your PostgreSQL connection string:
+### 1. Environment Setup
+Copy the environment template:
 ```bash
 cp .env.example .env
 ```
-Default connection string format:
+Default PostgreSQL connection string:
 ```env
-DATABASE_URL="postgresql://postgres:password@localhost:5432/onefi_marketplace?schema=public"
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/onefi_marketplace?schema=public"
 ```
 
-### 2. Generate Prisma Client
+### 2. Install Dependencies & Generate Prisma Client
 ```bash
+npm install
 npx prisma generate
 ```
 
-### 3. Run Database Migrations
-Push the schema to your local PostgreSQL instance:
+### 3. Setup & Seed Database
+Push the Prisma schema to your PostgreSQL instance and seed mock products:
 ```bash
 npx prisma db push
-```
-
-### 4. Seed Database
-Seed the 7 realistic mock products, variants, and EMI plans into PostgreSQL:
-```bash
 npx prisma db seed
 ```
 
-### 5. Start Development Server
+### 4. Run Development Server
 ```bash
 npm run dev
 ```
+Open [http://localhost:3000/shop](http://localhost:3000/shop) in your browser.
 
 ---
 
-## API Endpoints (Stage 2)
+## 📡 API Endpoints
 
 | Method | Endpoint | Description |
 | :--- | :--- | :--- |
-| `GET` | `/api/marketplace/products` | Fetch all products (supports `?category=` & `?search=`) |
-| `GET` | `/api/marketplace/products/[id]` | Fetch single product by ID with variants & EMI plans |
-| `GET` | `/api/marketplace/products/[id]/emi-plans` | Fetch list of EMI plans for a specific product |
+| `GET` | `/api/marketplace/products` | Fetch product catalog (supports `?category=` and `?search=`) |
+| `GET` | `/api/marketplace/products/[id]` | Fetch product details by ID (includes variants & EMI plans) |
+| `GET` | `/api/marketplace/products/[id]/emi-plans` | Fetch list of available EMI plans for a product |
 
 ---
 
-## Verification Commands
+## 🧪 Verification & Quality Control
 
-Run full type check, linting, and production build:
+Run linting and production build checks:
 ```bash
 npm run lint
 npm run build
