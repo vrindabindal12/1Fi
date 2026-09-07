@@ -51,24 +51,24 @@ export default function ShopPage() {
       {/* Tab Content Display Area */}
       <section className="transition-all duration-300">
         {activeTab === 'brands' && (
-          <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm text-center">
-            <div className="w-14 h-14 bg-slate-100 text-slate-400 rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <Building2 className="w-7 h-7" />
+          <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm text-center">
+            <div className="w-12 h-12 bg-slate-100 text-slate-400 rounded-xl flex items-center justify-center mx-auto mb-3">
+              <Building2 className="w-6 h-6 stroke-[2]" />
             </div>
-            <h3 className="text-lg font-bold text-slate-900 mb-1">Top Brands</h3>
-            <p className="text-xs text-slate-500 max-w-xs mx-auto leading-relaxed">
+            <h3 className="text-base font-bold text-slate-900 mb-1">Top Brands</h3>
+            <p className="text-xs text-slate-500 max-w-xs mx-auto leading-relaxed font-normal">
               Partner brand offers and integrations will appear here.
             </p>
           </div>
         )}
 
         {activeTab === 'stores' && (
-          <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-sm text-center">
-            <div className="w-14 h-14 bg-slate-100 text-slate-400 rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <Store className="w-7 h-7" />
+          <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm text-center">
+            <div className="w-12 h-12 bg-slate-100 text-slate-400 rounded-xl flex items-center justify-center mx-auto mb-3">
+              <Store className="w-6 h-6 stroke-[2]" />
             </div>
-            <h3 className="text-lg font-bold text-slate-900 mb-1">Nearby Stores</h3>
-            <p className="text-xs text-slate-500 max-w-xs mx-auto leading-relaxed">
+            <h3 className="text-base font-bold text-slate-900 mb-1">Nearby Stores</h3>
+            <p className="text-xs text-slate-500 max-w-xs mx-auto leading-relaxed font-normal">
               Physical retail merchant outlets will appear here.
             </p>
           </div>

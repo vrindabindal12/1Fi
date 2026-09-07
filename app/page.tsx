@@ -16,34 +16,34 @@ export default function HomePage() {
       </header>
 
       {/* Credit Overview Card Placeholder */}
-      <div className="bg-gradient-to-br from-slate-900 via-slate-800 to-purple-950 text-white rounded-3xl p-6 mb-6 shadow-xl relative overflow-hidden">
-        <div className="flex items-center justify-between mb-4">
+      <div className="bg-slate-900 text-white rounded-2xl p-5 mb-5 shadow-sm">
+        <div className="flex items-center justify-between mb-3">
           <span className="text-xs font-medium text-slate-300">Available Mutual Fund Limit</span>
-          <span className="text-[10px] font-bold bg-emerald-500/20 text-emerald-300 px-2.5 py-0.5 rounded-full border border-emerald-500/30">
+          <span className="text-[10px] font-bold bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full border border-emerald-500/30">
             Active
           </span>
         </div>
-        <div className="text-3xl font-extrabold text-white mb-2 tracking-tight">₹ 2,50,000</div>
-        <p className="text-xs text-slate-300">Collateralized against your investment portfolio</p>
+        <div className="text-2xl font-bold text-white mb-1.5 tracking-tight">₹ 2,50,000</div>
+        <p className="text-xs text-slate-400 font-normal">Collateralized against your investment portfolio</p>
       </div>
 
       {/* Quick Action Card to Shop */}
-      <div className="bg-white rounded-3xl p-6 border border-slate-100 shadow-sm mb-6">
+      <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm mb-5">
         <div className="flex items-center gap-3 mb-3">
-          <div className="p-2.5 bg-purple-100 text-purple-700 rounded-2xl">
-            <Zap className="w-6 h-6" />
+          <div className="p-2 bg-purple-50 text-purple-700 rounded-xl">
+            <Zap className="w-5 h-5 stroke-[2]" />
           </div>
           <div>
             <h2 className="text-base font-bold text-slate-900">Start Shopping</h2>
-            <p className="text-xs text-slate-500">Explore products on 1Fi Marketplace</p>
+            <p className="text-xs text-slate-500 font-normal">Explore products on 1Fi Marketplace</p>
           </div>
         </div>
         <Link
           href="/shop"
-          className="w-full bg-purple-700 hover:bg-purple-800 text-white text-xs font-bold py-3 px-4 rounded-2xl flex items-center justify-center gap-2 shadow-md shadow-purple-900/20 transition-all"
+          className="w-full bg-purple-700 hover:bg-purple-800 text-white text-xs font-bold py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors"
         >
           <span>Go to Shop Page</span>
-          <ArrowRight className="w-4 h-4" />
+          <ArrowRight className="w-4 h-4 stroke-[2]" />
         </Link>
       </div>
 
