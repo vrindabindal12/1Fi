@@ -23,7 +23,7 @@ export default function BottomNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 max-w-md mx-auto z-50 bg-white/95 backdrop-blur-md border-t border-slate-100 rounded-t-3xl shadow-[0_-6px_25px_rgba(15,23,42,0.08)] px-2 py-2.5">
+    <nav className="fixed bottom-0 left-0 right-0 max-w-md mx-auto z-50 bg-white/95 backdrop-blur-sm border-t border-slate-200/80 rounded-t-2xl shadow-lg px-2 py-2">
       <div className="flex justify-around items-center">
         {navItems.map((item) => {
           const Icon = item.icon;
@@ -33,14 +33,14 @@ export default function BottomNav() {
             <Link
               key={item.name}
               href={item.href}
-              className={`flex flex-col items-center justify-center py-1 px-3 rounded-2xl transition-all duration-200 ${
+              className={`flex flex-col items-center justify-center py-1 px-3 rounded-xl transition-colors ${
                 isActive
-                  ? 'text-purple-700 font-semibold scale-105'
+                  ? 'text-purple-700 font-semibold'
                   : 'text-slate-400 hover:text-slate-600 font-medium'
               }`}
             >
-              <div className={`p-1.5 rounded-xl transition-colors ${isActive ? 'bg-purple-100/70 text-purple-700' : 'bg-transparent'}`}>
-                <Icon className="w-5 h-5 stroke-[2.2]" />
+              <div className={`p-1.5 rounded-xl transition-colors ${isActive ? 'bg-purple-50 text-purple-700' : 'bg-transparent'}`}>
+                <Icon className="w-5 h-5 stroke-[2]" />
               </div>
               <span className={`text-[11px] mt-0.5 tracking-tight ${isActive ? 'font-bold text-purple-700' : 'text-slate-400'}`}>
                 {item.name}

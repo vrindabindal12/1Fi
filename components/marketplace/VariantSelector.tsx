@@ -31,20 +31,20 @@ export default function VariantSelector({
     <div
       role="radiogroup"
       aria-label={`Select ${variantName}`}
-      className="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm space-y-3"
+      className="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm space-y-3"
     >
       <div className="flex items-center justify-between">
         <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500">
           Select {variantName}
         </h3>
         {selectedVariant && (
-          <span className="text-xs font-bold text-purple-700 bg-purple-50 px-2.5 py-0.5 rounded-full border border-purple-100">
+          <span className="text-xs font-semibold text-purple-700 bg-purple-50 px-2.5 py-0.5 rounded-full border border-purple-100/80">
             {selectedVariant.value}
           </span>
         )}
       </div>
 
-      <div className="grid grid-cols-1 gap-2.5">
+      <div className="grid grid-cols-1 gap-2">
         {variants.map((variant) => {
           const isSelected = selectedVariant?.id === variant.id;
 
@@ -55,9 +55,9 @@ export default function VariantSelector({
               role="radio"
               aria-checked={isSelected}
               onClick={() => onSelectVariant(variant)}
-              className={`w-full p-3.5 min-h-[48px] rounded-2xl border text-left flex items-center justify-between gap-3 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-600 ${
+              className={`w-full p-3 min-h-[44px] rounded-xl border text-left flex items-center justify-between gap-3 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-600 ${
                 isSelected
-                  ? 'bg-purple-700 text-white border-purple-700 shadow-md shadow-purple-900/20 scale-[1.01]'
+                  ? 'bg-purple-700 text-white border-purple-700 shadow-sm'
                   : 'bg-slate-50 hover:bg-slate-100/80 text-slate-800 border-slate-200/80'
               }`}
             >
@@ -74,7 +74,7 @@ export default function VariantSelector({
 
               {variant.priceAdjustment > 0 && (
                 <span
-                  className={`text-[11px] font-extrabold px-2.5 py-0.5 rounded-full shrink-0 ${
+                  className={`text-[11px] font-bold px-2 py-0.5 rounded-full shrink-0 ${
                     isSelected
                       ? 'bg-purple-800 text-purple-100'
                       : 'bg-slate-200/70 text-slate-700'

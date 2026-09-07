@@ -31,27 +31,27 @@ export default function ProductCard({ product }: ProductCardProps) {
     <Link
       href={`/shop/product/${product.id}`}
       aria-label={`View details for ${product.name}`}
-      className="group bg-white rounded-3xl p-3.5 border border-slate-100 shadow-sm hover:shadow-md hover:border-purple-200/80 transition-all duration-300 flex flex-col justify-between relative overflow-hidden h-full cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-600"
+      className="group bg-white rounded-2xl p-3 border border-slate-200/80 hover:border-purple-300 transition-colors flex flex-col justify-between relative overflow-hidden h-full cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-600"
     >
       {/* Badges Container */}
       {hasNoCostEmi && (
-        <div className="absolute top-3 left-3 z-10">
-          <span className="inline-flex items-center gap-1 bg-purple-700 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-full shadow-sm">
-            <Sparkles className="w-2.5 h-2.5 text-yellow-300" />
+        <div className="absolute top-2.5 left-2.5 z-10">
+          <span className="inline-flex items-center gap-1 bg-purple-700 text-white text-[9px] font-semibold px-2 py-0.5 rounded-md">
+            <Sparkles className="w-2.5 h-2.5 text-yellow-300 fill-current" />
             <span>No Cost EMI</span>
           </span>
         </div>
       )}
 
       {/* Product Image Area */}
-      <div className="relative w-full aspect-square mb-3 rounded-2xl bg-slate-50 overflow-hidden group-hover:scale-[1.02] transition-transform duration-300">
+      <div className="relative w-full aspect-square mb-2.5 rounded-xl bg-slate-50 overflow-hidden">
         {!imageError ? (
           <Image
             src={product.imageUrl}
             alt={product.name}
             fill
             sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-            className="object-cover object-center"
+            className="object-contain p-2 object-center"
             onError={() => setImageError(true)}
           />
         ) : (
@@ -68,32 +68,32 @@ export default function ProductCard({ product }: ProductCardProps) {
           <span className="text-[10px] font-extrabold text-purple-700 uppercase tracking-wider block mb-0.5">
             {product.brand}
           </span>
-          <h3 className="text-xs font-bold text-slate-900 group-hover:text-purple-700 transition-colors line-clamp-2 leading-snug mb-2">
+          <h3 className="text-xs font-semibold text-slate-900 group-hover:text-purple-700 transition-colors line-clamp-2 leading-snug mb-1.5">
             {product.name}
           </h3>
         </div>
 
         <div>
           {/* Price */}
-          <div className="text-sm font-black text-slate-900 tracking-tight mb-1">
+          <div className="text-sm font-bold text-slate-900 tracking-tight mb-1">
             {formatCurrency(product.basePrice)}
           </div>
 
           {/* EMI Preview Badge */}
           {lowestEmi ? (
-            <div className="bg-purple-50 border border-purple-100 rounded-xl px-2.5 py-1 mb-3">
-              <span className="text-[10px] font-bold text-purple-700 block">
+            <div className="bg-purple-50 border border-purple-100/80 rounded-lg px-2 py-0.5 mb-2.5">
+              <span className="text-[10px] font-semibold text-purple-700 block">
                 From {formatCurrency(lowestEmi)}/mo
               </span>
             </div>
           ) : (
-            <div className="h-[26px] mb-3" />
+            <div className="h-[22px] mb-2.5" />
           )}
 
           {/* CTA Link / Button */}
-          <div className="w-full bg-slate-100 group-hover:bg-purple-700 text-slate-700 group-hover:text-white text-xs font-bold py-2.5 px-3 min-h-[38px] rounded-xl flex items-center justify-center gap-1 transition-all duration-200">
+          <div className="w-full bg-slate-100 group-hover:bg-purple-700 text-slate-700 group-hover:text-white text-xs font-semibold py-2 px-2.5 rounded-xl flex items-center justify-center gap-1 transition-colors">
             <span>View details</span>
-            <ChevronRight className="w-3.5 h-3.5 stroke-[2.5]" />
+            <ChevronRight className="w-3.5 h-3.5 stroke-[2]" />
           </div>
         </div>
       </div>

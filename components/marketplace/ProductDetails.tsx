@@ -141,23 +141,23 @@ export default function ProductDetails({ productId }: ProductDetailsProps) {
       </div>
 
       {/* Primary Proceed CTA Button */}
-      <div className="pt-2 sticky bottom-20 z-40 bg-slate-50/95 backdrop-blur-md p-2 rounded-3xl border border-slate-200/80 shadow-lg">
+      <div className="pt-2 sticky bottom-20 z-40 bg-slate-50/95 backdrop-blur-sm p-2 rounded-2xl border border-slate-200/80 shadow-md">
         <button
           type="button"
           disabled={!activePlanId}
           onClick={handleProceed}
-          className={`w-full font-extrabold py-3.5 px-6 rounded-2xl shadow-xl flex items-center justify-center gap-2 text-sm transition-all duration-200 ${
+          className={`w-full font-bold py-3.5 px-6 rounded-xl shadow-md flex items-center justify-center gap-2 text-sm transition-colors ${
             activePlanId
-              ? 'bg-purple-700 hover:bg-purple-800 text-white shadow-purple-900/25 active:scale-[0.99]'
+              ? 'bg-purple-700 hover:bg-purple-800 text-white'
               : 'bg-slate-200 text-slate-400 cursor-not-allowed'
           }`}
         >
           <span>Proceed with EMI Plan</span>
-          <ArrowRight className="w-4 h-4 stroke-[2.5]" />
+          <ArrowRight className="w-4 h-4 stroke-[2]" />
         </button>
-        <div className="flex items-center justify-center gap-1.5 text-[11px] text-slate-400 mt-2">
+        <div className="flex items-center justify-center gap-1.5 text-[11px] text-slate-500 mt-2 font-medium">
           <ShieldCheck className="w-3.5 h-3.5 text-purple-600" />
-          <span>Collateralized loan approval via Mutual Funds</span>
+          <span>Secured via Mutual Fund collateral</span>
         </div>
       </div>
     </div>

@@ -55,37 +55,37 @@ export default function EMIPlanSelector({
               role="radio"
               aria-checked={isSelected}
               onClick={() => onSelectPlan(plan)}
-              className={`w-full p-4 min-h-[72px] rounded-2xl border text-left transition-all duration-200 relative overflow-hidden select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-600 ${
+              className={`w-full p-3.5 min-h-[68px] rounded-2xl border text-left transition-colors relative overflow-hidden select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-600 ${
                 isSelected
-                  ? 'bg-purple-700 text-white border-purple-700 shadow-lg shadow-purple-900/25 scale-[1.01]'
+                  ? 'bg-purple-700 text-white border-purple-700 shadow-sm'
                   : 'bg-white hover:bg-slate-50 text-slate-900 border-slate-200/80 shadow-sm'
               }`}
             >
               {/* Top Row: Radio + Tenure + Badge */}
-              <div className="flex items-center justify-between mb-2">
-                <div className="flex items-center gap-2.5">
+              <div className="flex items-center justify-between mb-1.5">
+                <div className="flex items-center gap-2">
                   <div
                     className={`transition-colors ${
                       isSelected ? 'text-white' : 'text-slate-300'
                     }`}
                   >
                     {isSelected ? (
-                      <CheckCircle2 className="w-5 h-5 fill-white text-purple-700 stroke-[2.5]" />
+                      <CheckCircle2 className="w-4.5 h-4.5 fill-white text-purple-700 stroke-[2.2]" />
                     ) : (
-                      <Circle className="w-5 h-5 stroke-[1.8]" />
+                      <Circle className="w-4.5 h-4.5 stroke-[1.8]" />
                     )}
                   </div>
-                  <span className="text-sm font-black tracking-tight">
+                  <span className="text-sm font-bold tracking-tight">
                     {plan.tenureMonths} Months
                   </span>
                 </div>
 
                 {plan.isNoCost ? (
                   <span
-                    className={`inline-flex items-center gap-1 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full ${
+                    className={`inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full ${
                       isSelected
-                        ? 'bg-yellow-400 text-slate-900 shadow-sm'
-                        : 'bg-purple-100 text-purple-700 border border-purple-200'
+                        ? 'bg-emerald-500/20 text-emerald-200 border border-emerald-400/30'
+                        : 'bg-purple-50 text-purple-700 border border-purple-200/60'
                     }`}
                   >
                     <Sparkles className="w-2.5 h-2.5 fill-current" />
@@ -93,22 +93,22 @@ export default function EMIPlanSelector({
                   </span>
                 ) : (
                   <span
-                    className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full ${
+                    className={`text-[10px] font-medium px-2 py-0.5 rounded-full ${
                       isSelected
                         ? 'bg-purple-800 text-purple-100'
                         : 'bg-slate-100 text-slate-600'
                     }`}
                   >
-                    {plan.interestRate}% Interest p.a.
+                    {plan.interestRate}% p.a.
                   </span>
                 )}
               </div>
 
               {/* Monthly Amount Header */}
-              <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 pl-7">
+              <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 pl-6">
                 <div className="shrink-0">
                   <span
-                    className={`text-lg font-black tracking-tight ${
+                    className={`text-base sm:text-lg font-black tracking-tight ${
                       isSelected ? 'text-white' : 'text-slate-900'
                     }`}
                   >

@@ -26,19 +26,20 @@ export default function ShopPage() {
       </header>
 
       {/* Purple Hero / Banner Area */}
-      <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-purple-800 via-purple-700 to-indigo-950 text-white p-6 mb-6 shadow-xl shadow-purple-900/20 border border-purple-500/20">
-        <div className="absolute -right-6 -bottom-6 w-32 h-32 bg-purple-500/20 rounded-full blur-2xl pointer-events-none" />
-        <div className="relative z-10">
-          <div className="inline-flex items-center gap-1.5 bg-white/15 backdrop-blur-md px-3 py-1 rounded-full text-xs font-medium text-purple-100 mb-3 border border-white/10">
-            <Sparkles className="w-3.5 h-3.5 text-yellow-300" />
-            <span>Credit on Mutual Funds</span>
+      <section className="rounded-2xl bg-purple-700 text-white p-4.5 mb-5 shadow-sm">
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <div className="inline-flex items-center gap-1 bg-white/20 px-2.5 py-0.5 rounded-full text-[10px] font-semibold text-white mb-2">
+              <Sparkles className="w-3 h-3 text-yellow-300 fill-current" />
+              <span>Credit on Mutual Funds</span>
+            </div>
+            <h2 className="text-base font-bold leading-snug tracking-tight mb-1">
+              Shop today, pay later using Mutual Funds
+            </h2>
+            <p className="text-xs text-purple-100 font-normal leading-relaxed max-w-[280px]">
+              Easy 0% interest EMI plans instantly without liquidating investments.
+            </p>
           </div>
-          <h2 className="text-xl font-extrabold leading-tight tracking-tight mb-2">
-            Shop today,<br />Pay later using Mutual funds.
-          </h2>
-          <p className="text-xs text-purple-100/90 font-medium leading-relaxed max-w-[260px]">
-            Convert purchases into easy 0% interest EMI plans instantly without liquidating your investments.
-          </p>
         </div>
       </section>
 

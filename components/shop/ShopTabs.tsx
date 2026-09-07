@@ -33,10 +33,10 @@ export default function ShopTabs({ activeTab, onTabChange }: ShopTabsProps) {
             id={`tab-${tab.id}`}
             type="button"
             onClick={() => onTabChange(tab.id)}
-            className={`flex-1 text-center py-2.5 px-3 min-h-[42px] rounded-full text-xs font-bold transition-all duration-200 select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-600 ${
+            className={`flex-1 text-center py-2 px-3 min-h-[38px] rounded-full text-xs font-bold transition-all duration-200 select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-600 ${
               isActive
-                ? 'bg-purple-700 text-white shadow-md shadow-purple-900/20 scale-[1.02]'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-300/40'
+                ? 'bg-purple-700 text-white shadow-sm'
+                : 'text-slate-600 hover:text-slate-900 hover:bg-slate-300/40 font-medium'
             }`}
           >
             {tab.label}

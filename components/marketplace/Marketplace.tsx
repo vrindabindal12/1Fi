@@ -8,7 +8,7 @@ import ProductGrid from './ProductGrid';
 import ProductSkeleton from './ProductSkeleton';
 import MarketplaceError from './MarketplaceError';
 import MarketplaceEmpty from './MarketplaceEmpty';
-import { ShoppingBag, Sparkles } from 'lucide-react';
+import { ShoppingBag } from 'lucide-react';
 
 const CATEGORIES = [
   'All',
@@ -36,21 +36,15 @@ export default function Marketplace() {
   return (
     <div className="w-full space-y-4">
       {/* Marketplace Section Header */}
-      <div className="bg-white rounded-3xl p-5 border border-purple-100/80 shadow-sm">
-        <div className="flex items-center justify-between mb-3">
-          <div className="flex items-center gap-2.5">
-            <div className="p-2.5 bg-purple-100 text-purple-700 rounded-2xl">
-              <ShoppingBag className="w-5 h-5 stroke-[2.2]" />
-            </div>
-            <div>
-              <h2 className="text-base font-extrabold text-slate-900 leading-tight">1Fi Marketplace</h2>
-              <p className="text-xs text-slate-500 font-medium">Shop products with flexible EMI options</p>
-            </div>
+      <div className="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm">
+        <div className="flex items-center gap-2.5 mb-3">
+          <div className="p-2 bg-purple-50 text-purple-700 rounded-xl">
+            <ShoppingBag className="w-5 h-5 stroke-[2]" />
           </div>
-          <span className="hidden sm:inline-flex items-center gap-1 bg-purple-50 text-purple-700 border border-purple-200/60 text-[10px] font-bold px-2.5 py-1 rounded-full">
-            <Sparkles className="w-3 h-3 text-purple-600" />
-            <span>0% EMI Available</span>
-          </span>
+          <div>
+            <h2 className="text-base font-bold text-slate-900 leading-snug">1Fi Marketplace</h2>
+            <p className="text-xs text-slate-500 font-normal">Shop products with flexible EMI options</p>
+          </div>
         </div>
 
         {/* Search Bar */}
