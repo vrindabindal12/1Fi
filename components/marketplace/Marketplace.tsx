@@ -49,7 +49,7 @@ export default function Marketplace() {
           </div>
           <span className="hidden sm:inline-flex items-center gap-1 bg-purple-50 text-purple-700 border border-purple-200/60 text-[10px] font-bold px-2.5 py-1 rounded-full">
             <Sparkles className="w-3 h-3 text-purple-600" />
-            <span>Dynamic Catalog</span>
+            <span>0% EMI Available</span>
           </span>
         </div>
 

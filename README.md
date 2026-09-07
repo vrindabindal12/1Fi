@@ -20,9 +20,18 @@ Key features implemented:
 - **EMI Summary & Proceed Flow**: Selected plan summary card detailing terms, leading to a multi-step confirmation page that preserves selection state across navigation.
 - **Mobile-First Layout**: Single-column vertical layout optimized for mobile viewports (320px–550px) inside the 1Fi mobile shell frame, preserving readability on desktop screens.
 
+## Marketplace Flow
+
+Shop
+→ Marketplace
+→ Product
+→ Variant
+→ EMI Plan
+→ Confirmation
+
 ---
 
-## Technology Stack
+## Tech Stack
 
 - **Frontend Framework**: Next.js 16 (App Router), React 19, TypeScript
 - **Styling**: Tailwind CSS v4

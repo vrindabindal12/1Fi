@@ -49,7 +49,7 @@ export default function HomePage() {
 
       <div className="bg-slate-100/80 rounded-2xl p-4 text-center border border-slate-200/60">
         <p className="text-xs text-slate-500">
-          Home screen placeholder for Stage 1 application shell.
+          Welcome to 1Fi. Manage credit limits and shop with Mutual Fund collateral.
         </p>
       </div>
     </div>

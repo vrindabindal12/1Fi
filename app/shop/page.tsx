@@ -56,7 +56,7 @@ export default function ShopPage() {
             </div>
             <h3 className="text-lg font-bold text-slate-900 mb-1">Top Brands</h3>
             <p className="text-xs text-slate-500 max-w-xs mx-auto leading-relaxed">
-              No implementation required for this assignment. Brand partner integrations will appear here.
+              Partner brand offers and integrations will appear here.
             </p>
           </div>
         )}
@@ -68,7 +68,7 @@ export default function ShopPage() {
             </div>
             <h3 className="text-lg font-bold text-slate-900 mb-1">Nearby Stores</h3>
             <p className="text-xs text-slate-500 max-w-xs mx-auto leading-relaxed">
-              No implementation required for this assignment. Physical retail merchant outlets will appear here.
+              Physical retail merchant outlets will appear here.
             </p>
           </div>
         )}

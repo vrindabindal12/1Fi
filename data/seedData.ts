@@ -6,7 +6,7 @@ export const seedProductsData = [
     category: 'Smartphones',
     basePrice: 129900,
     imageUrl: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=800&auto=format&fit=crop&q=80',
-    description: 'Forged in titanium and featuring the groundbreaking A17 Pro chip, a customizable Action button, and the most powerful iPhone camera system ever.',
+    description: 'Titanium enclosure, A17 Pro chip, Action button, 48MP camera system, and USB-C connectivity.',
     variants: [
       { id: 'var-ip15p-1', name: 'Storage & Color', value: '128GB / Natural Titanium', priceAdjustment: 0, imageUrl: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=800&auto=format&fit=crop&q=80' },
       { id: 'var-ip15p-2', name: 'Storage & Color', value: '256GB / Natural Titanium', priceAdjustment: 10000, imageUrl: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=800&auto=format&fit=crop&q=80' },
@@ -26,7 +26,7 @@ export const seedProductsData = [
     category: 'Smartphones',
     basePrice: 129999,
     imageUrl: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=800&auto=format&fit=crop&q=80',
-    description: 'Welcome to the era of mobile AI. With Galaxy AI in your hands, unlock new levels of creativity, productivity, and possibility starting with the most essential device.',
+    description: 'Snapdragon 8 Gen 3 processor, 200MP quad camera system, built-in S Pen, and 6.8-inch QHD+ AMOLED display.',
     variants: [
       { id: 'var-s24u-1', name: 'Storage & Color', value: '256GB / Titanium Gray', priceAdjustment: 0, imageUrl: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=800&auto=format&fit=crop&q=80' },
       { id: 'var-s24u-2', name: 'Storage & Color', value: '512GB / Titanium Black', priceAdjustment: 12000, imageUrl: 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=800&auto=format&fit=crop&q=80' },
@@ -45,7 +45,7 @@ export const seedProductsData = [
     category: 'Laptops',
     basePrice: 114900,
     imageUrl: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&auto=format&fit=crop&q=80',
-    description: 'Supercharged by M3, the impossibly thin MacBook Air sails through work and play. Liquid Retina display, up to 18 hours of battery life, and MagSafe charging.',
+    description: 'Apple M3 chip, 15.3-inch Liquid Retina display, up to 18 hours battery life, and MagSafe 3 charging.',
     variants: [
       { id: 'var-mba-1', name: 'RAM & SSD', value: '8GB / 256GB / Midnight', priceAdjustment: 0, imageUrl: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&auto=format&fit=crop&q=80' },
       { id: 'var-mba-2', name: 'RAM & SSD', value: '16GB / 512GB / Space Grey', priceAdjustment: 30000, imageUrl: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&auto=format&fit=crop&q=80' },
@@ -64,7 +64,7 @@ export const seedProductsData = [
     category: 'Headphones',
     basePrice: 29990,
     imageUrl: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&auto=format&fit=crop&q=80',
-    description: 'Industry-leading noise cancelling with two processors and eight microphones for unprecedented sound quality and crystal-clear hands-free calling.',
+    description: 'Integrated Processor V1, dual noise-cancelling mics, 30-hour battery life, and touch control sensor.',
     variants: [
       { id: 'var-sony-1', name: 'Color', value: 'Black', priceAdjustment: 0, imageUrl: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&auto=format&fit=crop&q=80' },
       { id: 'var-sony-2', name: 'Color', value: 'Silver', priceAdjustment: 0, imageUrl: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&auto=format&fit=crop&q=80' },
@@ -82,7 +82,7 @@ export const seedProductsData = [
     category: 'Smartwatches',
     basePrice: 41900,
     imageUrl: 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=800&auto=format&fit=crop&q=80',
-    description: 'S9 SiP enables a magical new way to use your watch without touching the screen. Advanced health sensors provide insights to help you better understand your physical and mental health.',
+    description: 'Apple S9 SiP chip, double-tap gesture control, Always-On Retina display, and ECG heart monitoring.',
     variants: [
       { id: 'var-aw9-1', name: 'Case Size & Connectivity', value: '41mm / GPS / Midnight', priceAdjustment: 0, imageUrl: 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=800&auto=format&fit=crop&q=80' },
       { id: 'var-aw9-2', name: 'Case Size & Connectivity', value: '45mm / Cellular / Starlight', priceAdjustment: 10000, imageUrl: 'https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=800&auto=format&fit=crop&q=80' },
@@ -100,7 +100,7 @@ export const seedProductsData = [
     category: 'Tablets',
     basePrice: 59900,
     imageUrl: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&auto=format&fit=crop&q=80',
-    description: 'Freshly redesigned around the M2 chip with stunning Liquid Retina display, landscape front camera, and ultra-fast Wi-Fi 6E.',
+    description: 'Apple M2 chip, 11-inch Liquid Retina display, 12MP landscape front camera, and Wi-Fi 6E support.',
     variants: [
       { id: 'var-ipad-1', name: 'Screen & Storage', value: '11-inch / 128GB / Space Grey', priceAdjustment: 0, imageUrl: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&auto=format&fit=crop&q=80' },
       { id: 'var-ipad-2', name: 'Screen & Storage', value: '13-inch / 256GB / Starlight', priceAdjustment: 20000, imageUrl: 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&auto=format&fit=crop&q=80' },
@@ -118,7 +118,7 @@ export const seedProductsData = [
     category: 'Televisions',
     basePrice: 44990,
     imageUrl: 'https://images.unsplash.com/photo-1593784991095-a205069470b6?w=800&auto=format&fit=crop&q=80',
-    description: 'PurColor technology expresses a huge range of colors for optimal picture performance and an immersive viewing experience.',
+    description: 'Crystal Processor 4K, HDR display, PurColor image processing, and Tizen Smart TV operating system.',
     variants: [
       { id: 'var-tv-1', name: 'Display & Panel', value: '55 inch / Crystal 4K', priceAdjustment: 0, imageUrl: 'https://images.unsplash.com/photo-1593784991095-a205069470b6?w=800&auto=format&fit=crop&q=80' },
       { id: 'var-tv-2', name: 'Display & Panel', value: '65 inch / QLED 4K', priceAdjustment: 25000, imageUrl: 'https://images.unsplash.com/photo-1593784991095-a205069470b6?w=800&auto=format&fit=crop&q=80' },

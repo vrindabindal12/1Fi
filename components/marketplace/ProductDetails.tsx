@@ -95,7 +95,7 @@ export default function ProductDetails({ productId }: ProductDetailsProps) {
           <span>Back to Marketplace</span>
         </Link>
         <span className="text-[11px] font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-full border border-slate-200/60">
-          Step 1: Product & EMI Selection
+          Product Details
         </span>
       </div>
 

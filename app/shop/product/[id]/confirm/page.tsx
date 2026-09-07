@@ -120,24 +120,24 @@ export default function ConfirmationPage() {
     );
   }
 
-  // Final Success Prototype View
+  // Final Success View
   if (isConfirmed) {
     return (
       <div className="w-full px-4 pt-8 pb-8 text-center space-y-6">
-        <div className="bg-white rounded-3xl p-8 border border-purple-100 shadow-xl space-y-4">
+        <div className="bg-white rounded-3xl p-8 border border-slate-100 shadow-xl space-y-4">
           <div className="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-inner border border-emerald-200">
             <CheckCircle2 className="w-10 h-10 stroke-[2.2]" />
           </div>
 
           <div>
             <span className="text-[10px] font-extrabold uppercase tracking-wider text-purple-700 bg-purple-50 px-3 py-1 rounded-full border border-purple-100">
-              Prototype Success State
+              Selection Confirmed
             </span>
             <h1 className="text-2xl font-black text-slate-900 tracking-tight mt-2">
-              EMI Plan Selected!
+              EMI Plan Selected
             </h1>
             <p className="text-xs text-slate-500 font-medium max-w-xs mx-auto mt-1 leading-relaxed">
-              You&apos;re all set! Your EMI plan choice for <strong className="text-slate-900">{product.name}</strong> has been logged for evaluation.
+              Your EMI plan choice for <strong className="text-slate-900">{product.name}</strong> has been confirmed.
             </p>
           </div>
 
@@ -187,11 +187,11 @@ export default function ConfirmationPage() {
           <span>Back to Product</span>
         </Link>
         <span className="text-[11px] font-semibold text-slate-500 bg-slate-100 px-3 py-1 rounded-full border border-slate-200/60">
-          Step 2: Confirmation
+          Order Summary
         </span>
       </div>
 
-      <div className="bg-white rounded-3xl p-5 border border-purple-100 shadow-sm space-y-4">
+      <div className="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm space-y-4">
         <div className="flex items-center gap-2 pb-3 border-b border-slate-100">
           <div className="p-2 bg-purple-100 text-purple-700 rounded-xl">
             <Receipt className="w-5 h-5" />
@@ -231,8 +231,8 @@ export default function ConfirmationPage() {
         </div>
 
         {/* Selected EMI Plan Breakdown */}
-        <div className="bg-purple-900 text-white rounded-2xl p-4 shadow-md space-y-2 text-xs">
-          <div className="flex items-center justify-between border-b border-purple-800/80 pb-2">
+        <div className="bg-slate-900 text-white rounded-2xl p-4 shadow-md space-y-2 text-xs">
+          <div className="flex items-center justify-between border-b border-slate-800 pb-2">
             <div className="flex items-center gap-1.5">
               <Calendar className="w-4 h-4 text-purple-300" />
               <span className="font-extrabold text-white">
@@ -240,7 +240,7 @@ export default function ConfirmationPage() {
               </span>
             </div>
             {selectedPlan.isNoCost && (
-              <span className="inline-flex items-center gap-1 bg-yellow-400 text-slate-900 text-[10px] font-extrabold px-2 py-0.5 rounded-full">
+              <span className="inline-flex items-center gap-1 bg-emerald-500/20 text-emerald-300 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full border border-emerald-500/30">
                 <Sparkles className="w-2.5 h-2.5 fill-current" />
                 <span>0% Interest</span>
               </span>
@@ -248,27 +248,27 @@ export default function ConfirmationPage() {
           </div>
 
           <div className="space-y-1.5 pt-1">
-            <div className="flex justify-between text-purple-200">
+            <div className="flex justify-between text-slate-300">
               <span>Monthly EMI:</span>
               <strong className="text-white font-black text-sm">
                 {formatCurrency(selectedPlan.monthlyAmount)} / month
               </strong>
             </div>
-            <div className="flex justify-between text-purple-200">
+            <div className="flex justify-between text-slate-300">
               <span>Interest Rate:</span>
               <strong className="text-white font-bold">
                 {selectedPlan.isNoCost ? '0%' : `${selectedPlan.interestRate}% p.a.`}
               </strong>
             </div>
-            <div className="flex justify-between text-purple-200">
+            <div className="flex justify-between text-slate-300">
               <span>Processing Fee:</span>
               <strong className="text-white font-bold">
                 {selectedPlan.processingFee > 0 ? formatCurrency(selectedPlan.processingFee) : 'FREE'}
               </strong>
             </div>
-            <div className="flex justify-between text-purple-200 pt-1 border-t border-purple-800/80">
+            <div className="flex justify-between text-slate-300 pt-1 border-t border-slate-800">
               <span>Total Payable Amount:</span>
-              <strong className="text-yellow-300 font-black">
+              <strong className="text-purple-300 font-black">
                 {formatCurrency(selectedPlan.totalAmount)}
               </strong>
             </div>
@@ -289,7 +289,7 @@ export default function ConfirmationPage() {
 
         <div className="flex items-center justify-center gap-1.5 text-[11px] text-slate-400 text-center font-medium">
           <ShieldCheck className="w-3.5 h-3.5 text-purple-600 shrink-0" />
-          <span>Prototype confirmation step. Zero charges incurred.</span>
+          <span>Collateralized credit against your Mutual Fund portfolio</span>
         </div>
       </div>
     </div>
