@@ -130,7 +130,7 @@ export default function ConfirmationPage() {
           </div>
 
           <div>
-            <span className="text-[10px] font-bold uppercase tracking-wider text-purple-700 bg-purple-50 px-3 py-1 rounded-full border border-purple-100">
+            <span className="text-[10px] font-extrabold uppercase tracking-wider text-purple-700 bg-purple-50 px-3 py-1 rounded-full border border-purple-100">
               Prototype Success State
             </span>
             <h1 className="text-2xl font-black text-slate-900 tracking-tight mt-2">
@@ -145,27 +145,27 @@ export default function ConfirmationPage() {
           <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200/80 text-left space-y-2 text-xs">
             <div className="flex justify-between text-slate-600">
               <span>Item:</span>
-              <strong className="text-slate-900">{product.name}</strong>
+              <strong className="text-slate-900 font-extrabold">{product.name}</strong>
             </div>
             {selectedVariant && (
               <div className="flex justify-between text-slate-600">
                 <span>Variant:</span>
-                <strong className="text-slate-900">{selectedVariant.value}</strong>
+                <strong className="text-slate-900 font-bold">{selectedVariant.value}</strong>
               </div>
             )}
             <div className="flex justify-between text-slate-600">
               <span>Monthly EMI:</span>
-              <strong className="text-purple-700 font-extrabold">{formatCurrency(selectedPlan.monthlyAmount)} / mo</strong>
+              <strong className="text-purple-700 font-black">{formatCurrency(selectedPlan.monthlyAmount)} / mo</strong>
             </div>
             <div className="flex justify-between text-slate-600">
               <span>Duration:</span>
-              <strong className="text-slate-900">{selectedPlan.tenureMonths} Months</strong>
+              <strong className="text-slate-900 font-bold">{selectedPlan.tenureMonths} Months</strong>
             </div>
           </div>
 
           <Link
             href="/shop"
-            className="w-full bg-purple-700 hover:bg-purple-800 text-white font-extrabold py-3.5 px-6 rounded-2xl shadow-lg shadow-purple-900/20 flex items-center justify-center gap-2 text-xs transition-all"
+            className="w-full bg-purple-700 hover:bg-purple-800 text-white font-extrabold py-3.5 px-6 rounded-2xl shadow-lg shadow-purple-900/20 flex items-center justify-center gap-2 text-xs transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-600"
           >
             <Home className="w-4 h-4" />
             <span>Return to Shop</span>
@@ -181,7 +181,7 @@ export default function ConfirmationPage() {
       <div className="flex items-center justify-between">
         <Link
           href={`/shop/product/${product.id}`}
-          className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-700 bg-white border border-slate-200/80 px-3.5 py-2 rounded-2xl shadow-sm hover:bg-purple-50 transition-colors"
+          className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-700 bg-white border border-slate-200/80 px-3.5 py-2 rounded-2xl shadow-sm hover:bg-purple-50 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-600"
         >
           <ArrowLeft className="w-4 h-4" />
           <span>Back to Product</span>
@@ -198,7 +198,7 @@ export default function ConfirmationPage() {
           </div>
           <div>
             <h1 className="text-base font-extrabold text-slate-900">Confirm EMI Plan Selection</h1>
-            <p className="text-xs text-slate-500">Review purchase details before continuing</p>
+            <p className="text-xs text-slate-500 font-medium">Review purchase details before continuing</p>
           </div>
         </div>
 
@@ -213,18 +213,18 @@ export default function ConfirmationPage() {
             />
           </div>
           <div className="flex-1 min-w-0">
-            <span className="text-[10px] font-bold text-purple-700 uppercase tracking-wider block">
+            <span className="text-[10px] font-extrabold text-purple-700 uppercase tracking-wider block">
               {product.brand}
             </span>
             <h2 className="text-xs font-extrabold text-slate-900 truncate">
               {product.name}
             </h2>
             {selectedVariant && (
-              <span className="text-[11px] text-slate-500 font-medium block">
+              <span className="text-[11px] text-slate-500 font-semibold block">
                 {selectedVariant.value}
               </span>
             )}
-            <span className="text-xs font-extrabold text-slate-900 block mt-0.5">
+            <span className="text-xs font-black text-slate-900 block mt-0.5">
               {formatCurrency(calculatedPrice)}
             </span>
           </div>
@@ -235,7 +235,7 @@ export default function ConfirmationPage() {
           <div className="flex items-center justify-between border-b border-purple-800/80 pb-2">
             <div className="flex items-center gap-1.5">
               <Calendar className="w-4 h-4 text-purple-300" />
-              <span className="font-bold text-white">
+              <span className="font-extrabold text-white">
                 {selectedPlan.tenureMonths} Months EMI Plan
               </span>
             </div>
@@ -250,25 +250,25 @@ export default function ConfirmationPage() {
           <div className="space-y-1.5 pt-1">
             <div className="flex justify-between text-purple-200">
               <span>Monthly EMI:</span>
-              <strong className="text-white font-extrabold text-sm">
+              <strong className="text-white font-black text-sm">
                 {formatCurrency(selectedPlan.monthlyAmount)} / month
               </strong>
             </div>
             <div className="flex justify-between text-purple-200">
               <span>Interest Rate:</span>
-              <strong className="text-white">
+              <strong className="text-white font-bold">
                 {selectedPlan.isNoCost ? '0%' : `${selectedPlan.interestRate}% p.a.`}
               </strong>
             </div>
             <div className="flex justify-between text-purple-200">
               <span>Processing Fee:</span>
-              <strong className="text-white">
+              <strong className="text-white font-bold">
                 {selectedPlan.processingFee > 0 ? formatCurrency(selectedPlan.processingFee) : 'FREE'}
               </strong>
             </div>
             <div className="flex justify-between text-purple-200 pt-1 border-t border-purple-800/80">
               <span>Total Payable Amount:</span>
-              <strong className="text-yellow-300 font-extrabold">
+              <strong className="text-yellow-300 font-black">
                 {formatCurrency(selectedPlan.totalAmount)}
               </strong>
             </div>
@@ -281,13 +281,13 @@ export default function ConfirmationPage() {
         <button
           type="button"
           onClick={() => setIsConfirmed(true)}
-          className="w-full bg-purple-700 hover:bg-purple-800 text-white font-extrabold py-3.5 px-6 rounded-2xl shadow-xl shadow-purple-900/25 flex items-center justify-center gap-2 text-sm transition-all hover:scale-[1.01] active:scale-[0.99]"
+          className="w-full bg-purple-700 hover:bg-purple-800 text-white font-extrabold py-3.5 px-6 rounded-2xl shadow-xl shadow-purple-900/25 flex items-center justify-center gap-2 text-sm transition-all hover:scale-[1.01] active:scale-[0.99] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-600"
         >
           <span>Confirm & Continue</span>
           <ChevronRight className="w-4 h-4 stroke-[2.5]" />
         </button>
 
-        <div className="flex items-center justify-center gap-1.5 text-[11px] text-slate-400 text-center">
+        <div className="flex items-center justify-center gap-1.5 text-[11px] text-slate-400 text-center font-medium">
           <ShieldCheck className="w-3.5 h-3.5 text-purple-600 shrink-0" />
           <span>Prototype confirmation step. Zero charges incurred.</span>
         </div>

@@ -28,13 +28,17 @@ export default function VariantSelector({
   const variantName = variants[0]?.name || 'Available Variants';
 
   return (
-    <div className="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm space-y-3">
+    <div
+      role="radiogroup"
+      aria-label={`Select ${variantName}`}
+      className="bg-white rounded-3xl p-5 border border-slate-100 shadow-sm space-y-3"
+    >
       <div className="flex items-center justify-between">
         <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500">
           Select {variantName}
         </h3>
         {selectedVariant && (
-          <span className="text-xs font-semibold text-purple-700 bg-purple-50 px-2.5 py-0.5 rounded-full border border-purple-100">
+          <span className="text-xs font-bold text-purple-700 bg-purple-50 px-2.5 py-0.5 rounded-full border border-purple-100">
             {selectedVariant.value}
           </span>
         )}
@@ -48,8 +52,10 @@ export default function VariantSelector({
             <button
               key={variant.id}
               type="button"
+              role="radio"
+              aria-checked={isSelected}
               onClick={() => onSelectVariant(variant)}
-              className={`p-3.5 rounded-2xl border text-left flex items-center justify-between transition-all duration-200 ${
+              className={`p-3.5 min-h-[46px] rounded-2xl border text-left flex items-center justify-between transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-600 ${
                 isSelected
                   ? 'bg-purple-700 text-white border-purple-700 shadow-md shadow-purple-900/20 scale-[1.01]'
                   : 'bg-slate-50 hover:bg-slate-100/80 text-slate-800 border-slate-200/80'
@@ -63,12 +69,12 @@ export default function VariantSelector({
                 >
                   {isSelected && <Check className="w-2.5 h-2.5 stroke-[3]" />}
                 </div>
-                <span className="text-xs font-semibold">{variant.value}</span>
+                <span className="text-xs font-bold">{variant.value}</span>
               </div>
 
               {variant.priceAdjustment > 0 && (
                 <span
-                  className={`text-[11px] font-bold px-2 py-0.5 rounded-full ${
+                  className={`text-[11px] font-extrabold px-2 py-0.5 rounded-full ${
                     isSelected
                       ? 'bg-purple-800 text-purple-100'
                       : 'bg-slate-200/70 text-slate-700'

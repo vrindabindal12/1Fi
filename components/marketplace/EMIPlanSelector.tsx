@@ -39,7 +39,7 @@ export default function EMIPlanSelector({
         <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500">
           Select EMI Duration
         </h3>
-        <span className="text-[11px] font-semibold text-purple-700 bg-purple-50 px-2.5 py-0.5 rounded-full border border-purple-100">
+        <span className="text-[11px] font-bold text-purple-700 bg-purple-50 px-2.5 py-0.5 rounded-full border border-purple-100">
           {emiPlans.length} {emiPlans.length === 1 ? 'Option' : 'Options'}
         </span>
       </div>
@@ -55,7 +55,7 @@ export default function EMIPlanSelector({
               role="radio"
               aria-checked={isSelected}
               onClick={() => onSelectPlan(plan)}
-              className={`w-full p-4 rounded-2xl border text-left transition-all duration-200 relative overflow-hidden select-none ${
+              className={`w-full p-4 min-h-[72px] rounded-2xl border text-left transition-all duration-200 relative overflow-hidden select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-600 ${
                 isSelected
                   ? 'bg-purple-700 text-white border-purple-700 shadow-lg shadow-purple-900/25 scale-[1.01]'
                   : 'bg-white hover:bg-slate-50 text-slate-900 border-slate-200/80 shadow-sm'
@@ -75,7 +75,7 @@ export default function EMIPlanSelector({
                       <Circle className="w-5 h-5 stroke-[1.8]" />
                     )}
                   </div>
-                  <span className="text-sm font-extrabold tracking-tight">
+                  <span className="text-sm font-black tracking-tight">
                     {plan.tenureMonths} Months
                   </span>
                 </div>
@@ -93,10 +93,10 @@ export default function EMIPlanSelector({
                   </span>
                 ) : (
                   <span
-                    className={`text-[10px] font-semibold px-2.5 py-0.5 rounded-full ${
+                    className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full ${
                       isSelected
                         ? 'bg-purple-800 text-purple-100'
-                        : 'bg-slate-100 text-slate-500'
+                        : 'bg-slate-100 text-slate-600'
                     }`}
                   >
                     {plan.interestRate}% Interest p.a.
@@ -115,7 +115,7 @@ export default function EMIPlanSelector({
                     {formatCurrency(plan.monthlyAmount)}
                   </span>
                   <span
-                    className={`text-xs font-medium ${
+                    className={`text-xs font-semibold ${
                       isSelected ? 'text-purple-100' : 'text-slate-500'
                     }`}
                   >
