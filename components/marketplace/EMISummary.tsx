@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { EMIPlan } from '@/types/marketplace';
+import { formatCurrency } from '@/lib/formatters';
 import { Receipt } from 'lucide-react';
 
 interface EMISummaryProps {
@@ -9,13 +10,6 @@ interface EMISummaryProps {
 }
 
 export default function EMISummary({ selectedPlan }: EMISummaryProps) {
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-IN', {
-      style: 'currency',
-      currency: 'INR',
-      maximumFractionDigits: 0,
-    }).format(amount);
-  };
 
   return (
     <div className="bg-slate-900 text-white rounded-2xl p-4 shadow-md border border-slate-800 space-y-3">

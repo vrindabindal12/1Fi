@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { EMIPlan } from '@/types/marketplace';
+import { formatCurrency } from '@/lib/formatters';
 import { CheckCircle2, Circle } from 'lucide-react';
 
 interface EMIPlanSelectorProps {
@@ -24,14 +25,6 @@ export default function EMIPlanSelector({
       </div>
     );
   }
-
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-IN', {
-      style: 'currency',
-      currency: 'INR',
-      maximumFractionDigits: 0,
-    }).format(amount);
-  };
 
   return (
     <div className="space-y-3" role="radiogroup" aria-label="Select EMI Plan">

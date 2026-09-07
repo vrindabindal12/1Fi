@@ -24,7 +24,6 @@ export function useMarketplaceProduct(id: string) {
         setSelectedVariant(data.variants[0]);
       }
 
-      // Fetch EMI plans explicitly or fallback to product.emiPlans
       try {
         const emiData = await MarketplaceApiService.getEMIPlansByProductId(id);
         setEmiPlans(emiData);
@@ -39,49 +38,8 @@ export function useMarketplaceProduct(id: string) {
   }, [id]);
 
   useEffect(() => {
-    let isCancelled = false;
-
-    async function loadData() {
-      if (!id) return;
-      setLoading(true);
-      setError(null);
-
-      try {
-        const data = await MarketplaceApiService.getProductById(id);
-        if (!isCancelled) {
-          setProduct(data);
-          if (data.variants && data.variants.length > 0) {
-            setSelectedVariant(data.variants[0]);
-          }
-
-          try {
-            const emiData = await MarketplaceApiService.getEMIPlansByProductId(id);
-            if (!isCancelled) {
-              setEmiPlans(emiData);
-            }
-          } catch {
-            if (!isCancelled) {
-              setEmiPlans(data.emiPlans || []);
-            }
-          }
-        }
-      } catch (err) {
-        if (!isCancelled) {
-          setError(err instanceof Error ? err.message : 'Failed to fetch product details.');
-        }
-      } finally {
-        if (!isCancelled) {
-          setLoading(false);
-        }
-      }
-    }
-
-    loadData();
-
-    return () => {
-      isCancelled = true;
-    };
-  }, [id]);
+    fetchProductDetails();
+  }, [fetchProductDetails]);
 
   const calculatedPrice = product
     ? product.basePrice + (selectedVariant?.priceAdjustment || 0)
@@ -98,3 +56,4 @@ export function useMarketplaceProduct(id: string) {
     refetch: fetchProductDetails,
   };
 }
+

@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { useParams, useSearchParams } from 'next/navigation';
 import { Product, ProductVariant, EMIPlan } from '@/types/marketplace';
 import { MarketplaceApiService } from '@/lib/services/marketplaceApi';
+import { formatCurrency } from '@/lib/formatters';
 import ProductDetailSkeleton from '@/components/marketplace/ProductDetailSkeleton';
 import MarketplaceError from '@/components/marketplace/MarketplaceError';
 import {
@@ -80,14 +81,6 @@ export default function ConfirmationPage() {
       isMounted = false;
     };
   }, [id, variantId, planId]);
-
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-IN', {
-      style: 'currency',
-      currency: 'INR',
-      maximumFractionDigits: 0,
-    }).format(amount);
-  };
 
   const calculatedPrice = product
     ? product.basePrice + (selectedVariant?.priceAdjustment || 0)

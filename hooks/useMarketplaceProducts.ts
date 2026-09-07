@@ -25,33 +25,8 @@ export function useMarketplaceProducts() {
   }, [selectedCategory, searchQuery]);
 
   useEffect(() => {
-    let isCancelled = false;
-
-    async function loadData() {
-      setLoading(true);
-      setError(null);
-      try {
-        const data = await MarketplaceApiService.getProducts(selectedCategory, searchQuery);
-        if (!isCancelled) {
-          setProducts(data);
-        }
-      } catch (err) {
-        if (!isCancelled) {
-          setError(err instanceof Error ? err.message : 'Unable to load products. Please check your connection.');
-        }
-      } finally {
-        if (!isCancelled) {
-          setLoading(false);
-        }
-      }
-    }
-
-    loadData();
-
-    return () => {
-      isCancelled = true;
-    };
-  }, [selectedCategory, searchQuery]);
+    fetchProducts();
+  }, [fetchProducts]);
 
   const handleClearFilters = useCallback(() => {
     setSelectedCategory('All');
@@ -70,3 +45,4 @@ export function useMarketplaceProducts() {
     clearFilters: handleClearFilters,
   };
 }
+

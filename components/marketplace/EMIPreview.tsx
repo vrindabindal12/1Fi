@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { EMIPlan } from '@/types/marketplace';
+import { formatCurrency } from '@/lib/formatters';
 import { Calendar, ChevronRight, ShieldCheck } from 'lucide-react';
 
 interface EMIPreviewProps {
@@ -11,14 +12,6 @@ interface EMIPreviewProps {
 
 export default function EMIPreview({ emiPlans, onViewAllPlans }: EMIPreviewProps) {
   if (!emiPlans || emiPlans.length === 0) return null;
-
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-IN', {
-      style: 'currency',
-      currency: 'INR',
-      maximumFractionDigits: 0,
-    }).format(amount);
-  };
 
   const lowestMonthly = Math.min(...emiPlans.map((p) => p.monthlyAmount));
   const hasNoCost = emiPlans.some((p) => p.isNoCost);

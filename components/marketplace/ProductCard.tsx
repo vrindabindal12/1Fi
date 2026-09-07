@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Product } from '@/types/marketplace';
+import { formatCurrency } from '@/lib/formatters';
 import { ChevronRight, ImageOff } from 'lucide-react';
 
 interface ProductCardProps {
@@ -12,14 +13,6 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   const [imageError, setImageError] = useState(false);
-
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-IN', {
-      style: 'currency',
-      currency: 'INR',
-      maximumFractionDigits: 0,
-    }).format(amount);
-  };
 
   const lowestEmi = product.emiPlans && product.emiPlans.length > 0
     ? Math.min(...product.emiPlans.map((e) => e.monthlyAmount))

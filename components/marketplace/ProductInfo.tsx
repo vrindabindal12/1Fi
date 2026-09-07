@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Product, ProductVariant } from '@/types/marketplace';
+import { formatCurrency } from '@/lib/formatters';
 
 interface ProductInfoProps {
   product: Product;
@@ -14,13 +15,6 @@ export default function ProductInfo({
   selectedVariant,
   calculatedPrice,
 }: ProductInfoProps) {
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-IN', {
-      style: 'currency',
-      currency: 'INR',
-      maximumFractionDigits: 0,
-    }).format(amount);
-  };
 
   const hasAdjustment = selectedVariant && selectedVariant.priceAdjustment > 0;
 
